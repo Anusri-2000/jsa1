@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higher-Order Functions Example</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+
+    <button id="redButton">Red</button>
+    <button id="greenButton">Green</button>
+    <button id="blueButton">Blue</button>
+
+    <script>
+        const boxes = document.querySelectorAll('.box');
+
+        // Function to change color
+        function changeColor(color) {
+            return function() {
+                boxes.forEach(box => {
+                    box.style.backgroundColor = color;
+                });
+            };
+        }
+
+        // Assigning higher-order functions to button clicks
+        document.getElementById('redButton').onclick = changeColor('red');
+        document.getElementById('greenButton').onclick = changeColor('green');
+        document.getElementById('blueButton').onclick = changeColor('blue');
+    </script>
+</body>
+</html>
